@@ -26,9 +26,10 @@ module.exports = merge(common, {
         new webpack.HotModuleReplacementPlugin(),
         new HtmlWebpackPlugin({
             title: 'demoASHISH',
+            favicon: `src/assets/logo/favicon.ico`,
             inject: false,
             template: require('html-webpack-template'),
-            bodyHtmlSnippet :'<main class="main" id="app"></main>'
+            bodyHtmlSnippet :'<div id="app"></div>'
         })   
     ]
 });
