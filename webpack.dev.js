@@ -4,12 +4,12 @@ const common = require('./webpack.common.js');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = merge(common, {
-    mode: 'development',   
+    mode: 'development',
     devtool: 'inline-source-map',
     devServer: {
         contentBase: './dist',
         hot: true
-    },  
+    },
     module: {
         rules: [{
             test: /\.scss$/,
@@ -20,15 +20,21 @@ module.exports = merge(common, {
             }, {
                 loader: "sass-loader"
             },]
-        }]
+        },
+        {
+            test: /\.(png|jpg)$/,
+            use: {
+                loader: "url-loader",
+            },
+        },]
     },
-    plugins: [                           
+    plugins: [
         new webpack.HotModuleReplacementPlugin(),
         new HtmlWebpackPlugin({
             title: 'demoASHISH',
             inject: false,
             template: require('html-webpack-template'),
-            bodyHtmlSnippet :'<main class="main" id="app"></main>'
-        })   
+            bodyHtmlSnippet: '<main class="main" id="app"></main>'
+        })
     ]
 });
